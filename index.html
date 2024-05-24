@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="clas.css">
+</head>
+
+<body>
+    <div class="cal">
+
+
+        <div id="big-output">
+            <div id="output">
+
+            </div>
+            <div id="answer">
+            </div>
+
+
+        </div>
+
+
+        <div id="down">
+            <button>%</button>
+            <button onclick="cancel()">CE</button>
+            <button onclick="clearN()">AC</button>
+            <button onclick="cl('/')" id="btn1">÷</button>
+            <button onclick="num('7')" id="btn2">7</button>
+            <button onclick="num('8')" id="btn3">8</button>
+            <button onclick="num('9')" id="btn4">9</button>
+            <button onclick="cl('*')" id="btn5">*</button>
+            <button onclick="num('4')" id="btn6">4</button>
+            <button onclick="num('5')" id="btn7">5</button>
+            <button onclick="num('6')" id="btn8">6</button>
+            <button onclick="cl('-')" id="btn9">-</button>
+            <button onclick="num('1')" id="btn10">1</button>
+            <button onclick="num('2')" id="btn11">2</button>
+            <button onclick="num('3')" id="btn12">3</button>
+            <button onclick="cl('+')" id="btn13">+</button>
+            <button onclick="cl('#')" id="btn14">#</button>
+            <button onclick="num('0')" id="btn15">0</button>
+            <button onclick="cl16('.')" id="btn16">.</button>
+            <button onclick="calculate(symbol)" id="btn17">=</button>
+
+        </div>
+
+    </div>
+    <script>
+        let result = document.getElementById("output")
+        let final = document.getElementById("answer")
+        let bigOutput = document.getElementById("big-output")
+
+        secondNum = ""
+        symbol = ""
+        firstNum = ""
+
+
+        function num(params) {
+            let num1 = params
+            result.innerHTML += num1
+            firstNum += num1
+        }
+        function cl(sign) {
+            symbol = sign
+            result.innerHTML += sign
+            secondNum = firstNum
+            firstNum = ""
+        }
+        let answer
+        function calculate(symbol) {
+            if (symbol === "/") {
+                answer = Number(secondNum) / Number(firstNum)
+                final.innerHTML += answer
+            }
+            else if (symbol === "+") {
+                answer = Number(secondNum) + Number(firstNum)
+                final.innerHTML = answer
+            }
+            else if (symbol === "-") {
+                answer = Number(secondNum) - Number(firstNum)
+                final.innerHTML = answer
+            }
+            else if (symbol === "*") {
+                answer = Number(secondNum) * Number(firstNum)
+                final.innerHTML = answer
+            }
+        result.innerHTML = ""
+
+        }
+
+        function clearN() {
+            let close = result.innerHTML;
+            console.log(close);
+            result.innerHTML = close.slice(0, result.innerHTML.length - result.innerHTML.length)
+            final.innerHTML = close.slice(0, final.innerHTML.length - final.innerHTML.length)
+        }
+
+        function cancel() {
+            let close = result.innerHTML;
+            console.log(close);
+            result.innerHTML = close.slice(0, result.innerHTML.length - 1)
+            final.innerHTML = close.slice(0, final.innerHTML.length - 1)
+        }
+    </script>
+</body>
+
+</html>
